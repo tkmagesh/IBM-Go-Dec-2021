@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
@@ -17,7 +16,7 @@ func main() {
 		var userChoice int
 		fmt.Scanln(&userChoice)
 		if userChoice == 5 {
-			os.Exit(0)
+			break
 		}
 		if userChoice < 1 || userChoice > 5 {
 			fmt.Println("Invalid choice")

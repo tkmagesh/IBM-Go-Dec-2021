@@ -105,6 +105,6 @@ Display the following menu
 		display the menu again
 	if the user choice is 5
 		exit from the application
-	If the user enters any other choice, 
+	If the user enters any other choice 
 		display "Invalid choice" 
 		display the menu again.
