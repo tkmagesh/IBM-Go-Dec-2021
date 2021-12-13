@@ -3,10 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	add := getLoggedOp(add)
-	subtract := getLoggedOp(subtract)
-	add(100, 200)
-	subtract(100, 200)
+	/*
+		add := getLoggedOp(add)
+		subtract := getLoggedOp(subtract)
+		add(100, 200)
+		subtract(100, 200)
+	*/
+	getLoggedOp(add)(100, 200)
+	getLoggedOp(subtract)(100, 200)
 }
 
 func add(x, y int) int {
