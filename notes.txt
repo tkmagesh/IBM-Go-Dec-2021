@@ -119,3 +119,7 @@ Functions
 
 
 Structure and Interpretation of Computer Programs (SICP)
+
+Assignment-3
+    Refactor Assignment-2 using functions
+    
