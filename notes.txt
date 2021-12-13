@@ -111,3 +111,11 @@ Display the following menu
 
 Functions
     1. variadic functions
+    2. Higher order functions
+        a. anonymous functions
+        b. assign functions to variables
+        c. pass functions as arguments
+        d. return functions from functions
+
+
+Structure and Interpretation of Computer Programs (SICP)
