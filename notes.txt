@@ -48,6 +48,7 @@ Simple
     No classes
     No inheritance
     No access modifiers
+    No exceptions
 
 Compiled
 On par with "C"
