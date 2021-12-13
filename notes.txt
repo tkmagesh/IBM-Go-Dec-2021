@@ -87,3 +87,5 @@ Data Types in Golang
 
     byte (alias for uint8)
     rune (alias for int32) (represent a Unicode code point (unicode character))
+
+1. Write a program that will print all the prime numbers between 3 to 100
