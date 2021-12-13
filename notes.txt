@@ -108,3 +108,6 @@ Display the following menu
 	If the user enters any other choice 
 		display "Invalid choice" 
 		display the menu again.
+
+Functions
+    1. variadic functions
