@@ -1,0 +1,89 @@
+Magesh Kuppan
+
+Schedulue
+    Commence : 9:30 Hrs
+    Tea Beak : 11:00 Hrs (20 mins)
+    Lunch Break : 13:00 Hrs (1 Hr)
+    Tea Break : 15:30 Hrs (20 mins)
+    Wind up : 17:30 Hrs
+
+Methodology
+    No powerpoint
+    100% hands on
+    Atleast 50% of the participants should be have completed the assignments for us to proceed
+    Be prepared to share your solution
+
+Repository
+    https://github.com/tkmagesh/ibm-go-dec-2021
+
+Software Requirements
+    Go tools (https://go.dev/dl/)
+    Visual Studio Code (https://code.visualstudio.com/) OR any editor
+
+About You
+    Name
+    Primary Skillset
+    Total Experience
+    Experience in Golang if any
+    Any interesting books you read / shows you watched
+
+
+Weapons of Math Destruction
+Pushkin Vertigo (publisher)
+The Shadow of the Wind 
+
+Why Golang?
+    1. Simplicity (python)
+    2. Speed
+    3. Concurrency
+    4. No need for any runtime
+    5. Open source
+
+
+Barry Shwartz
+    The Paradox of Choice 
+
+Simple
+    25 keywords
+    No classes
+    No inheritance
+    No access modifiers
+
+Compiled
+On par with "C"
+Concurrency
+    1000s of concurrent operations (goroutines) using one OS thread
+    Parallelism is built in
+    Built in scheduler
+    Built for concurrency
+    Language features for concurrency
+        go, chan, operators ( <- ), select & range
+
+go run hello-world.go
+go build hello-world.go
+go build -o hello-world hello-world.go
+
+Data Types in Golang
+    bool
+    string
+
+    int
+    int8
+    int16
+    int32
+    int64
+
+    uint
+    uint8
+    uint16
+    uint32
+    uint64
+
+    float32
+    float64
+
+    complex64 (real (float32) + imaginary (float32))
+    complex128 (real (float64) + imaginary (float64))
+
+    byte (alias for uint8)
+    rune (alias for int32) (represent a Unicode code point (unicode character))
