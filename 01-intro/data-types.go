@@ -75,7 +75,46 @@ func main() {
 		message := "Result ="
 		result := x + y
 	*/
+
 	x, y, message := 100, 200, "Result ="
 	result := x + y
+
 	fmt.Println(message, result)
+
+	const z = 100
+
+	//iota (represents integer value from 0)
+	/*
+		const (
+			red   = iota
+			green = iota
+			blue  = iota
+		)
+	*/
+
+	/*
+		const (
+			red = iota
+			green
+			blue
+		)
+	*/
+
+	/*
+		const (
+			red = iota + 5
+			green
+			blue
+		)
+	*/
+
+	const (
+		red = iota + 5
+		green
+		_
+		blue
+	)
+
+	fmt.Println(red, green, blue)
+
 }
