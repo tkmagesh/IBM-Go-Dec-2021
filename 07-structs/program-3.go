@@ -10,7 +10,7 @@ type Product struct {
 	Category string
 }
 
-//association
+//composition
 type PerishableProduct struct {
 	Product
 	expiry string
