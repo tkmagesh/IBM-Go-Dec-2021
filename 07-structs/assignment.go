@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Product struct {
 	Id       int
 	Name     string
@@ -18,6 +20,28 @@ func main() {
 		Product{101, "Kettle", 2500, 10, "Utencil"},
 		Product{104, "Scribble Pad", 20, 20, "Stationary"},
 	}
+
+	fmt.Println("IndexOf marker => ", IndexOf(products, marker))
+
+	fmt.Println("Costly Products")
+	costlyProductPredicate := func(product Product) bool {
+		return product.Cost > 1000
+	}
+
+	costlyProducts := Filter(products, costlyProductPredicate)
+	fmt.Println(FormatProducts(costlyProducts))
+}
+
+func (product Product) Format() string {
+	return fmt.Sprintf("Id = %d, Name = %s, Cost = %f, Units = %d, Category = %s", product.Id, product.Name, product.Cost, product.Units, product.Category)
+}
+
+func FormatProducts(products []Product) string {
+	var result string
+	for _, p := range products {
+		result += fmt.Sprintf("%v\n", p.Format())
+	}
+	return result
 }
 
 /*
@@ -39,3 +63,26 @@ Any => return true if ANY of the products matches the given criteria else return
 		2. Are there ANY stationary products? (category == "Stationary")
 
 */
+
+func IndexOf(products []Product, product Product) int {
+	for idx, p := range products {
+		if p == product {
+			return idx
+		}
+	}
+	return -1
+}
+
+func Includes(products []Product, product Product) bool {
+	return IndexOf(products, product) != -1
+}
+
+func Filter(products []Product, predicate func(Product) bool) []Product {
+	result := []Product{}
+	for _, p := range products {
+		if predicate(p) {
+			result = append(result, p)
+		}
+	}
+	return result
+}
