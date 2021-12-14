@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	calculator "modularity-demo/calc"
+
 	"modularity-demo/calc/utils"
 
 	"github.com/fatih/color"

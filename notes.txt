@@ -155,4 +155,5 @@ Modules go 1.13
 
     Creating a module
         go mod init <module_name>
-                    
+        go mod tidy
+        go mod vendor
