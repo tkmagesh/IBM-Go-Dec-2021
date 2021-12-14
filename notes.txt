@@ -137,3 +137,22 @@ cap
 panic
 recover
 append
+
+Modules go 1.13
+
+    $GOPATH
+        pkg
+        bin
+        src
+            github.com
+                tkmagesh
+                    app1
+
+                    app2
+                        utils
+                        main.go
+                            import "github.com/tkmagesh/app2/utils"
+
+    Creating a module
+        go mod init <module_name>
+                    
