@@ -10,6 +10,14 @@ type Product struct {
 	Category string
 }
 
+type Organization struct {
+	Name string
+	YOE  int
+}
+type Employee struct {
+	org Organization
+}
+
 func main() {
 	//var p Product
 	//p := Product{}
@@ -34,6 +42,9 @@ func main() {
 
 	applyDiscount(&p, 10)
 	fmt.Println(ToString(p)) //=> Cost 9
+
+	e := Employee{}
+	fmt.Printf("%#v\n", e)
 }
 
 func ToString(p Product) string {
