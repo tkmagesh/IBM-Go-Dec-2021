@@ -20,6 +20,9 @@ func main() {
 	pp := PerishableProduct{Product: Product{201, "Grapes", 60, 5, "Food"}, expiry: "2 Days"}
 	//fmt.Printf("%#v\n", pp)
 	fmt.Println(ToString(pp))
+
+	applyDiscount(&pp.Product, 10)
+	fmt.Println(ToString(pp))
 }
 
 /* func ToString(p PerishableProduct) string {
@@ -28,4 +31,10 @@ func main() {
 
 func ToString(p PerishableProduct) string {
 	return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %q, Expiry = %s", p.Id, p.Name, p.Cost, p.Units, p.Category, p.expiry)
+}
+
+//Write a function (applyDiscount) that can used to apply discount(%) for a PerishableProduct
+
+func applyDiscount(p *Product, discount float64) {
+	p.Cost = p.Cost * ((100 - discount) / 100)
 }
