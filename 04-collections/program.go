@@ -45,7 +45,23 @@ func main() {
 	//using make function to proactively allocate memory
 	randomNos := make([]int, 0, 100)
 	fmt.Println(randomNos, len(randomNos), cap(randomNos))
-	randomNos = append(randomNos, 10, 20, 30, 40, 50)
-	fmt.Println("After adding 5 random values")
+	randomNos = append(randomNos, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+	fmt.Println("After adding 10 random values")
 	fmt.Println(randomNos, len(randomNos), cap(randomNos))
+
+	//slicing
+	/*
+		[lo : hi] => from lo to hi-1
+		[lo : ] => from lo to end
+		[ : hi] => from 0 to hi-1
+		[lo : lo] => empty slice
+		[lo : lo+1] => single element slice with [lo]
+		[:] => copy of the slice
+
+	*/
+
+	fmt.Println("Slicing...")
+	fmt.Println("randomNos[1:4]", randomNos[1:4])
+	fmt.Println("randomNos[:5]", randomNos[:5])
+	fmt.Println("randomNos[5:]", randomNos[5:])
 }
