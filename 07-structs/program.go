@@ -23,7 +23,16 @@ func main() {
 	}
 	//fmt.Printf("%#v\n", p)
 	fmt.Println(ToString(p))
-	applyDisount(p, 10)
+
+	var productPtr *Product = &p
+
+	//deferencing to access the attribute of a struct
+	fmt.Println((*productPtr).Id) //=> 100
+
+	//access the attribute directly using the pointer reference
+	fmt.Println(productPtr.Id) //=> 100
+
+	applyDiscount(&p, 10)
 	fmt.Println(ToString(p)) //=> Cost 9
 }
 
@@ -32,3 +41,6 @@ func ToString(p Product) string {
 }
 
 //Write a function (applyDiscount) that can used to apply discount(%) for a product
+func applyDiscount(p *Product, discount float64) {
+	p.Cost = p.Cost * ((100 - discount) / 100)
+}
