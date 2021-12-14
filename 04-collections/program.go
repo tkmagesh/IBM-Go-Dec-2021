@@ -64,4 +64,49 @@ func main() {
 	fmt.Println("randomNos[1:4]", randomNos[1:4])
 	fmt.Println("randomNos[:5]", randomNos[:5])
 	fmt.Println("randomNos[5:]", randomNos[5:])
+
+	fmt.Println()
+	fmt.Println("Maps")
+	/*
+		var productRanks map[string]int = map[string]int{}
+		productRanks["pen"] = 5
+		productRanks["pencil"] = 2
+	*/
+	/*
+		var productRanks map[string]int = map[string]int{
+			"pen":    5,
+			"pencil": 2,
+		}
+	*/
+	/*
+		var productRanks = map[string]int{
+			"pen":    5,
+			"pencil": 2,
+		}
+	*/
+	productRanks := map[string]int{
+		"pen":    5,
+		"pencil": 2,
+	}
+	productRanks["marker"] = 3
+	productRanks["scribble-pad"] = 1
+	fmt.Println(productRanks)
+
+	fmt.Println("Iterating a map")
+	for key, value := range productRanks {
+		fmt.Println(key, value)
+	}
+
+	fmt.Println("check if a key exists")
+	p := "mouse-pad"
+	if value, exists := productRanks[p]; exists {
+		fmt.Printf("Value of %q is %d\n", p, value)
+	} else {
+		fmt.Printf("%q does not exist\n", p)
+	}
+
+	fmt.Println("Removing an item from the map")
+	delete(productRanks, "pen")
+	fmt.Println("After removing 'pen'")
+	fmt.Println(productRanks)
 }
