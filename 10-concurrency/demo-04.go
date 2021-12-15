@@ -23,7 +23,6 @@ func f1(wg *sync.WaitGroup) {
 	fmt.Println("f1 started")
 	time.Sleep(5 * time.Second)
 	fmt.Println("f1 ended")
-
 }
 
 func f2() {
