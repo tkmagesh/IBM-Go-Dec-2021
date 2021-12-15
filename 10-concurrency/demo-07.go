@@ -3,11 +3,10 @@ package main
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 )
 
-var opCount int
-
-var mutex sync.Mutex = sync.Mutex{}
+var opCount int32
 
 func main() {
 	wg := &sync.WaitGroup{}
@@ -22,11 +21,6 @@ func main() {
 func add(x, y int, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Printf("processing %d and %d\n", x, y)
-
-	mutex.Lock()
-	{
-		opCount++
-	}
-	mutex.Unlock()
+	atomic.AddInt32(&opCount, 1)
 	//fmt.Println(x + y)
 }
