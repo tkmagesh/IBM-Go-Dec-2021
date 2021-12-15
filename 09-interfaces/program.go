@@ -33,13 +33,19 @@ func (r Rectangle) Perimeter() float64 {
 func main() {
 	c := Circle{Radius: 10}
 	//fmt.Println("Area = ", c.Area())
-	PrintArea(c)
-	PrintPerimeter(c)
+	/*
+		PrintArea(c)
+		PrintPerimeter(c)
+	*/
+	PrintShape(c)
 
 	r := Rectangle{Height: 10, Width: 20}
 	//fmt.Println("Area = ", r.Area())
-	PrintArea(r)
-	PrintPerimeter(r)
+	/*
+		PrintArea(r)
+		PrintPerimeter(r)
+	*/
+	PrintShape(r)
 }
 
 type ShapeWithArea interface {
@@ -56,4 +62,21 @@ type ShapeWithPerimeter interface {
 
 func PrintPerimeter(shapeWithPerimeter ShapeWithPerimeter) {
 	fmt.Println("Perimeter = ", shapeWithPerimeter.Perimeter())
+}
+
+/*
+type Shape interface {
+	Area() float64
+	Perimeter() float64
+}
+*/
+
+type Shape interface {
+	ShapeWithArea
+	ShapeWithPerimeter
+}
+
+func PrintShape(s Shape) {
+	PrintArea(s)
+	PrintPerimeter(s)
 }
