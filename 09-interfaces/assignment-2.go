@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Println(sum(10, 20))                                                 //=> 30
@@ -17,6 +20,25 @@ func main() {
 /*
 	Hint: use strconv.Atoi() to convert from string to int
 */
-func sum( /*  */ ) int {
-	/*  */
+func sum(data ...interface{}) int {
+	result := 0
+	for _, v := range data {
+		switch val := v.(type) {
+		case int:
+			result += val
+		case string:
+			if no, ok := strconv.Atoi(val); ok == nil {
+				result += no
+			}
+		case []interface{}:
+			result += sum(val...)
+		case []int:
+			intfList := make([]interface{}, len(val))
+			for i, v := range val {
+				intfList[i] = v
+			}
+			result += sum(intfList...)
+		}
+	}
+	return result
 }
