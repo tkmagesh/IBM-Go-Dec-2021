@@ -59,6 +59,7 @@ Concurrency
     Built for concurrency
     Language features for concurrency
         go, chan, operators ( <- ), select & range
+        sync package
 
 go run hello-world.go
 go build hello-world.go
