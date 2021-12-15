@@ -162,3 +162,13 @@ Modules go 1.13
 Concurrency
     To detect race conditions
          go run --race demo-05.go
+
+    
+    Channels
+        ch <- 10 => write data in to the channel
+        x := <- ch => reading data from the channel
+        The read operation is a 'blocking' operation
+
+        Unbuffered channels
+            A write can be successful ONLY when a read is already initiated
+            If no read operation is initiated, the write operation will be blocked
