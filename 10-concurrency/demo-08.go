@@ -3,24 +3,24 @@ package main
 import (
 	"fmt"
 	"sync"
-	"sync/atomic"
+	"time"
 )
 
-var opCount int32
+//Not advisable to use global variables
+var result int
 
 func main() {
 	wg := &sync.WaitGroup{}
-	wg.Add(5000)
-	for idx := 0; idx < 5000; idx++ {
-		go add(idx, idx, wg)
-	}
+	wg.Add(1)
+	go add(10, 20, wg)
 	wg.Wait()
-	fmt.Println("opCount:", opCount)
+	fmt.Println("result:", result)
 }
 
 func add(x, y int, wg *sync.WaitGroup) {
 	defer wg.Done()
+	time.Sleep(3 * time.Second)
 	fmt.Printf("processing %d and %d\n", x, y)
-	atomic.AddInt32(&opCount, 1)
+	result = x + y
 	//fmt.Println(x + y)
 }
