@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
-	ch1, ch2 := make(chan string), make(chan string)
+	ch1 := make(chan string)
+	ch2 := make(chan string)
+	done := make(chan bool)
 	go func() {
 		for {
 			ch1 <- "from 1"
@@ -19,13 +21,25 @@ func main() {
 			time.Sleep(time.Second * 2)
 		}
 	}()
-	for {
+	go func() {
+		var input string
+		fmt.Scanln(&input)
+		done <- true
+	}()
+	stop := false
+	for !stop {
 		select {
 		case s1 := <-ch1:
 			fmt.Println(s1)
 
 		case s2 := <-ch2:
 			fmt.Println(s2)
+
+		case <-done:
+			fmt.Println("Done")
+			stop = true
+			break
 		}
 	}
+	fmt.Println("Exiting main")
 }
