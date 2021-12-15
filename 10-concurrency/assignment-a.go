@@ -16,16 +16,25 @@ func main() {
 	dataSet1 := data[:len(data)/2]
 	dataSet2 := data[len(data)/2:]
 	ch := make(chan int)
-	go sum(ch, dataSet1...)
-	go sum(ch, dataSet2...)
+
+	go func(resultCh chan int, nos ...int) {
+		result := sum(nos...)
+		resultCh <- result
+	}(ch, dataSet1...)
+
+	go func(resultCh chan int, nos ...int) {
+		result := sum(nos...)
+		resultCh <- result
+	}(ch, dataSet2...)
+
 	result := <-ch + <-ch
 	fmt.Println("Result : ", result)
 }
 
-func sum(resultCh chan int, nos ...int) {
+func sum(nos ...int) int {
 	var result int
 	for _, no := range nos {
 		result += no
 	}
-	resultCh <- result
+	return result
 }
