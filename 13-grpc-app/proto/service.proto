@@ -15,10 +15,18 @@ message AddResponse{
     int64 sum = 1;
 }
 
+message DummyRequest{
+    string data = 1;
+}
+
+message DummyResponse{
+    string dummy = 1;
+}
+
 //service & operation defintion
 service AppService {
 
     //request & response
     rpc Add(AddRequest) returns (AddResponse);
-
+    rpc Dummy(DummyRequest) returns (DummyResponse);
 }

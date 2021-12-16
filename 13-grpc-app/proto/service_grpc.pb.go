@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 type AppServiceClient interface {
 	//request & response
 	Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*AddResponse, error)
+	Dummy(ctx context.Context, in *DummyRequest, opts ...grpc.CallOption) (*DummyResponse, error)
 }
 
 type appServiceClient struct {
@@ -39,12 +40,22 @@ func (c *appServiceClient) Add(ctx context.Context, in *AddRequest, opts ...grpc
 	return out, nil
 }
 
+func (c *appServiceClient) Dummy(ctx context.Context, in *DummyRequest, opts ...grpc.CallOption) (*DummyResponse, error) {
+	out := new(DummyResponse)
+	err := c.cc.Invoke(ctx, "/proto.AppService/Dummy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AppServiceServer is the server API for AppService service.
 // All implementations must embed UnimplementedAppServiceServer
 // for forward compatibility
 type AppServiceServer interface {
 	//request & response
 	Add(context.Context, *AddRequest) (*AddResponse, error)
+	Dummy(context.Context, *DummyRequest) (*DummyResponse, error)
 	mustEmbedUnimplementedAppServiceServer()
 }
 
@@ -54,6 +65,9 @@ type UnimplementedAppServiceServer struct {
 
 func (UnimplementedAppServiceServer) Add(context.Context, *AddRequest) (*AddResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
+}
+func (UnimplementedAppServiceServer) Dummy(context.Context, *DummyRequest) (*DummyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Dummy not implemented")
 }
 func (UnimplementedAppServiceServer) mustEmbedUnimplementedAppServiceServer() {}
 
@@ -86,6 +100,24 @@ func _AppService_Add_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AppService_Dummy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DummyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServiceServer).Dummy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.AppService/Dummy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServiceServer).Dummy(ctx, req.(*DummyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AppService_ServiceDesc is the grpc.ServiceDesc for AppService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -96,6 +128,10 @@ var AppService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Add",
 			Handler:    _AppService_Add_Handler,
+		},
+		{
+			MethodName: "Dummy",
+			Handler:    _AppService_Dummy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
