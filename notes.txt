@@ -172,3 +172,20 @@ Concurrency
         Unbuffered channels
             A write can be successful ONLY when a read is already initiated
             If no read operation is initiated, the write operation will be blocked
+
+io
+    io package
+        base interfaces
+            Reader
+            Writer
+            Closer
+            Seeker
+    ioutil
+        read file
+        write file
+    bufio
+        read line
+        buffered reading and writing
+    os
+        file related operations
+            creating, opening, deleting
