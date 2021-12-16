@@ -72,6 +72,7 @@ func sum(valCh chan int, wg *sync.WaitGroup) (sumCh chan int) {
 	sumCh = make(chan int)
 	go func() {
 		defer wg.Done()
+		defer close(sumCh)
 		var sum int
 		for val := range valCh {
 			sum += val
@@ -89,12 +90,8 @@ func merger(filename string, evenSumCh, oddSumCh chan int, wg *sync.WaitGroup) {
 	}
 	defer file.Close()
 
-	for i := 0; i < 2; i++ {
-		select {
-		case evenSum := <-evenSumCh:
-			file.WriteString(fmt.Sprintf("Even total : %d\n", evenSum))
-		case oddSum := <-oddSumCh:
-			file.WriteString(fmt.Sprintf("Odd total : %d\n", oddSum))
-		}
-	}
+	evenSum := <-evenSumCh
+	file.WriteString(fmt.Sprintf("Even total : %d\n", evenSum))
+	oddSum := <-oddSumCh
+	file.WriteString(fmt.Sprintf("Odd total : %d\n", oddSum))
 }
