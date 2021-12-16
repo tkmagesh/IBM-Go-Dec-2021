@@ -268,3 +268,9 @@ To generate the proxy and the stub, run the following command in the application
         contains serialization information for the payload
     service_grpc.pb.go
         constain the proxy and the stub related info
+
+Testing
+    To run the tests
+        go test ./... -v
+
+    mockery -> mocking
