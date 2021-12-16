@@ -189,3 +189,77 @@ io
     os
         file related operations
             creating, opening, deleting
+
+GRPC
+    .NET Remoting
+        binary serialization
+        TCP based
+            Request & Response
+            Server Push
+            Bidirectional Streaming
+    Java RMI
+
+    CORBA
+        Identify a service
+        Request & Response
+        Data Serialization
+
+    WEB (Web Service)
+        TCP
+            HTTP
+        XML
+        SOAP (Simple Object Access Protocol)
+        WSDL (Web Service Description Language)
+
+    REST
+        Data as a resource
+        What data ? -> URL
+        What Operation? => HTTP Methods
+        Response -> HTTP Status Codes
+
+    GRPC
+        TCP
+            HTTP 2.0 (Formerly SPDY)
+        Binary Serialization
+        Serialization Format
+            Protocol buffers
+        Communication Patterns
+            Request & Response
+            Client Streaming
+            Server Streaing
+            Bidirectional Streaming
+        Languages Support
+            Java
+            .NET
+            Go
+            (https://grpc.io/docs/languages/)
+        
+    Protocol Bufferers
+        Schema is shared between the client and server
+
+P101,Pen,10,100,Stationary
+P102,Pencil,20,200,Stationary
+    Data => 56
+    XML => 248 (5 times)
+    JSON => 159 (3 times)
+
+Define the service
+Define the payload(request data, response data)
+Generate proxy and the stub
+Write the client code to communicate to the proxy
+Write the server code to provide the service functionaly
+
+Tools for GRPC
+    Mac
+        brew install protobuf
+        brew install protoc-gen-go
+        brew install protoc-gen-go-grpc
+
+    Windows
+        go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+        download the protoc tool from https://github.com/protocolbuffers/protobuf/releases/tag/v3.19.1
+
+
+To generate the proxy and the stub, run the following command in the application folder
+    protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/service.proto
